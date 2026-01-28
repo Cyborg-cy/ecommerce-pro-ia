@@ -1,0 +1,46 @@
+@baseUrl = http://localhost:4000
+@accessToken = @accessToken = {{login.response.body}}
+
+### =========================
+### Health check
+### =========================
+GET {{baseUrl}}/health
+
+
+### =========================
+### Login (admin)
+### =========================
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@demo.com",
+  "password": "admin"
+}
+
+
+### =========================
+### Me (requiere access token)
+### =========================
+GET {{baseUrl}}/me
+Authorization: Bearer {{accessToken}}
+
+
+### =========================
+### Admin secret (solo admin)
+### =========================
+GET {{baseUrl}}/admin/secret
+Authorization: Bearer {{accessToken}}
+
+
+### =========================
+### Refresh (usa cookie httpOnly)
+### =========================
+POST {{baseUrl}}/auth/refresh
+
+
+### =========================
+### Logout
+### =========================
+POST {{baseUrl}}/auth/logout
