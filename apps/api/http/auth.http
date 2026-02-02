@@ -1,5 +1,6 @@
 @baseUrl = http://localhost:4000
-@accessToken = @accessToken = {{login.response.body}}
+@accessToken = {{login.response.body.accessToken}}
+
 
 ### =========================
 ### Health check
